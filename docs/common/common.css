@@ -1,0 +1,72 @@
+
+/*reset系なので最初に読み込む*/
+body,
+h1,h2,h3,h4,h5,h6,
+ul,
+p
+{
+    margin: 0;
+}
+
+/*header*/
+header{
+    height: 75px;
+    padding: 0 30px;
+    border-bottom: 5px solid gray;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+header .Kamemo_logo_wrapper{
+    height:60px;
+    display: inline;
+    position: relative;
+}
+header .Kamemo_logo{
+    max-height: 100%;
+    max-width: 50vw;
+    position: absolute;
+    bottom: 0;
+}
+header .link_list_wapper{
+    display: inline-block;
+}
+header ul.link_list{
+    list-style:none;
+    padding-left: 0;
+}
+/*main*/
+main{
+    /*header,footerの高さを引く*/
+    box-sizing: border-box;
+    min-height: calc(100vh - 75px - 40px);
+    margin: 0 10px;
+    padding:30px 0;
+}
+/*footer*/
+footer{
+    height: 40px;
+    padding: 2.5px 10px;
+    box-sizing: border-box;
+    background-color:lightgray;
+}
+footer .copyright{
+    line-height: calc(40px - 2*2.5px);
+}
+footer .link_who_wrapper{
+    position: relative;
+}
+footer .link_who{
+    color:black;
+    text-decoration: none;
+}
+footer .my_name{
+    margin-left: 10px;
+}
+footer .kame_icon{
+    height: 1.5em;
+    width: 1.5em;
+    position: absolute;
+    bottom: 0;
+}
