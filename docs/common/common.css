@@ -1,18 +1,23 @@
-
 /*reset系なので最初に読み込む*/
-body,
-h1,h2,h3,h4,h5,h6,
-ul,
-p
+body,ul,p
 {
     margin: 0;
 }
-
+h1,h2,h3,h4,h5,h6{
+    margin:0;
+    font-size: 1em;
+    font-weight: normal;
+}
+/*変数*/
+:root{
+    --headerHeight:75px;
+    --footerHeight:40px;
+}
 /*header*/
 header{
-    height: 75px;
+    height: var(--headerHeight);
     padding: 0 30px;
-    border-bottom: 5px solid gray;
+    border-bottom: 3px solid gray;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -40,21 +45,22 @@ header ul.link_list{
 main{
     /*header,footerの高さを引く*/
     box-sizing: border-box;
-    min-height: calc(100vh - 75px - 40px);/*念のためdvh未対応用に書いておく*/
-    min-height: calc(100dvh - 75px - 40px);
-    margin: 0 10px;
-    padding:30px 0;
+    min-height: calc(100vh - var(--headerHeight) - var(--footerHeight));/*念のためdvh未対応用に書いておく*/
+    min-height: calc(100dvh - var(--headerHeight) - var(--footerHeight));
+    margin: 0;
+    padding:10px 0;
 }
 /*footer*/
 footer{
-    height: 40px;
-    padding: 2.5px 10px;
+    height: var(--footerHeight);
+    padding: 0 10px;
     box-sizing: border-box;
     background-color:lightgray;
     text-align: center;
 }
 footer .copyright{
-    line-height: calc(40px - 2*2.5px);
+    line-height: calc(var(--footerHeight) - 2*2.5px);
+    padding: 2.5px 0;
 }
 footer .link_who_wrapper{
     position: relative;
@@ -71,4 +77,19 @@ footer .kame_icon{
     width: 1.5em;
     position: absolute;
     bottom: 0;
+}
+
+/*main_title*/
+#main_title{
+    width:100%;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+}
+#main_title>h1{
+    margin: 0 30px;
+    font-size: 1.3em;
+}
+/*contents*/
+#contents{
+    padding: 0 30px;
 }

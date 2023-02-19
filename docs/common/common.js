@@ -55,31 +55,16 @@ const common={
             $title.innerText=page_title+' - '+this.site_name;
         }
     },
+    makeMainTitle:function(main_title_text){
+        const $main_title=document.getElementById('main_title');
+        if($main_title===null)return;//無ければ未設定
+        const $h1=document.createElement("h1");
+        $h1.innerText=main_title_text?main_title_text:'';
+        $main_title.appendChild($h1);
+    },
     getFirstElementByTagName:function(tagName){
         const $elements=document.getElementsByTagName(tagName);
         if($elements.length===0)return null;
         return $elements[0];
     }
 };
-
-//Debug
-common.debug={
-    name:'Debug',
-    value:'true',
-    set:function(){
-        sessionStorage.setItem(this.name,this.value);
-    },
-    unset:function(){
-        sessionStorage.removeItem(this.name);
-    },
-    isDebug:function(){
-        return sessionStorage.getItem(this.name)===this.value;
-    },
-    console_log:function(msg){
-        if(this.isDebug()) console.log(msg);
-    },
-    window_alert:function(msg){
-        if(this.isDebug()) window.alert(msg);
-    }
-}
-

@@ -7,20 +7,47 @@
     <title></title>
     <link rel="icon" href="/common/image/favicon.ico">
     <link rel="stylesheet" href="/common/common.css">
+    <style>
+        h2{
+            font-weight: bolder;
+            margin-bottom: 5px;
+        }
+        section{
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
     <header></header>
     <main>
-        <div id="index">
-            <ul>
-                <li><a href="./who.html">自己紹介・連絡先</a></li>
-            </ul>
+        <div id="main_title"></div>
+        <div id="contents">
+            <section>
+                <h2>サイトについて</h2>
+                <p>
+                    かめ のメモ用ということでKamemoとしました。（勢いでロゴも作りました。）<br>
+                    あくまで個人的なメモということで正確さの保証はしかねます。予めご了承ください。<br>
+                    間違いなどありましたら、連絡先までお願いします。<br>
+                    コンテンツとしては、しばらくは過去に書いたpdfの紹介とこのサイトの構築関連になると思います。<br>
+                    よろしくお願いいたします。
+                </p>
+            </section>
+            <section id="index">
+                <h2>ページリンク</h2>
+                <ul>
+                    <li><a href="./blog/">ブログ</a></li>
+                    <li><a href="./pdf_storage/">PDF置き場</a></li>
+                    <li><a href="./who.html">自己紹介・連絡先</a></li>
+                </ul>
+            </section>
         </div>
     </main>
     <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
     <script type="text/javascript" src="/common/common.js"></script>
     <script type="text/javascript">
-        common.init("Home");
+        common.init('ホーム');
+        common.makeMainTitle('Kamemo ホーム');
     </script>
 </body>
 </html>
