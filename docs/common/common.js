@@ -1,4 +1,5 @@
 const common={
+    version:0,
     site_name:'Kamemo',
     init:function(page_title){
         this.makeHeader();
@@ -8,16 +9,17 @@ const common={
     makeHeader:function(){
         const $header=this.getFirstElementByTagName('header');
         if($header===null)return;//無ければ未設定
-        $header.innerHTML=
-        '<div class="Kamemo_logo_wrapper">'+
-            '<a href="/">'+
-                '<img class="Kamemo_logo" src="/common/image/Kamemo_logo.png" alt="Kamemoロゴ">'+
-            '</a>'+
-        '</div>'+
-        '<div class="link_list_wapper">'+
-            '<ul id="header_link_list" class="link_list">'+
-            '</ul>'+
-        '</div>';
+        $header.innerHTML=`
+        <div class="Kamemo_logo_wrapper">
+            <a href="/">
+                <img class="Kamemo_logo" src="/common/image/Kamemo_logo.png" alt="Kamemoロゴ">
+            </a>
+        </div>
+        <div class="link_list_wapper">
+            <ul id="header_link_list" class="link_list">
+            </ul>
+        </div>
+        `;//複雑になったらajaxやiframeを検討
     },
     headerLinkList:{
         append:function(href,text){
@@ -37,16 +39,16 @@ const common={
     makeFooter:function(){
         const $footer=this.getFirstElementByTagName('footer');
         if($footer===null)return;//無ければ未設定
-        $footer.innerHTML=
-        '<div class="copyright">'+
-            '<span>&copy; 2023</span>'+
-            '<span class="link_who_wrapper">'+
-                '<a class="link_who" href="/who.html">'+
-                    '<span class=my_name>NalKame</span>'+
-                    '<img class="kame_icon" src="/common/image/kame_icon.png" alt="かめアイコン">'+
-                '</a>'+
-            '</span>'+
-        '</div>';
+        $footer.innerHTML=`
+        <div class="copyright">
+            <span>&copy; 2023</span>
+            <span class="link_who_wrapper">
+                <a class="link_who" href="/who.html">
+                    <span class=my_name>NalKame</span>
+                    <img class="kame_icon" src="/common/image/kame_icon.png" alt="かめアイコン">                </a>
+            </span>
+        </div>
+        `;//複雑になったらajaxやiframeを検討
     },
     makeTitle:function(page_title){
         const $title=this.getFirstElementByTagName('title');

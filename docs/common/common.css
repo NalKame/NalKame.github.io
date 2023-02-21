@@ -10,6 +10,7 @@ h1,h2,h3,h4,h5,h6{
 }
 /*変数*/
 :root{
+    --commonCssVersion:0;
     --headerHeight:75px;
     --footerHeight:40px;
 }
@@ -92,4 +93,13 @@ footer .kame_icon{
 /*contents*/
 #contents{
     padding: 0 30px;
+}
+
+/*Home他、主要ページの設定(必要があれば上書きする)*/
+h2{
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+section{
+    margin: 20px 0;
 }
