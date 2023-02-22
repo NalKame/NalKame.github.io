@@ -1,5 +1,5 @@
 const common={
-    version:0,
+    version:'0',
     site_name:'Kamemo',
     init:function(page_title){
         this.makeHeader();
