@@ -13,16 +13,25 @@
     const getCssProperty=function(name){
         return getComputedStyle(document.documentElement).getPropertyValue(name);
     }
-    const versions=[
-        new AssertEqual('commonJs',common.version,'0'),
-        new AssertEqual('commonCss',getCssProperty('--getCssProperty'),'0')
-    ];
+    const getDebugMode=function(){
+        if(typeof debugMode==='undefined'){
+            console.error('debugMode not exists');
+            return {
+                console_log:function(){},
+                window_alert:function(){}
+            }
+        }
+        return debugMode;
+    }
+    const versions=[];
+    if(typeof common!=='undefined')versions.push(new AssertEqual('commonJs',common?.version,'0'));
+    versions.push(new AssertEqual('commonCss',getCssProperty('--commonCssVersion'),'0'));
     //とりあえずdebug時コンソール出力
-    debugMode.console_log(versions);
+    getDebugMode().console_log(versions);
     for(const assert of versions){
-        if(!assert.actual)continue;//undefined(js)や空文字(css)のときは無視
+        if(!assert.actual)continue;//空文字(css)のときは無視
         if(!assert.equal){
-            debugMode.window_alert('最新でないファイルがあります。');
+            getDebugMode().window_alert('最新でないファイルがあります。');
             break;
         }
     }
