@@ -56,18 +56,22 @@ blog.article=function(id,title,dates,tags){
         }
     }
     class Article{
+        #id;
+        #title;
+        #dates;
+        #tags;
         constructor(id,title,dates,tags){
-            this.id=id;//フォルダ名としてurlに使用
-            this.title=title;
-            this.dates=dates;//['yyyy/mm/dd'] 作成日をいれ、更新日を追加していく
-            this.tags=tags;//tagの配列
+            this.#id=id;//フォルダ名としてurlに使用
+            this.#title=title;
+            this.#dates=dates;//['yyyy/mm/dd'] 作成日をいれ、更新日を追加していく
+            this.#tags=tags;//tagの配列
             if(blog.getDebugMode().isDebug()){
                 this.validateDates();
             }
         }
         validateDates(){
             const regex = articleDateFormat.regexp;
-            for(const date of this.dates){
+            for(const date of this.#dates){
                 if(!regex.test(date)){
                     console.error('date format error');
                     console.log(this);
@@ -75,19 +79,19 @@ blog.article=function(id,title,dates,tags){
             }
         }
         titleIncludes(array){
-            return blog.utils.includesEvery(this.title,array);
+            return blog.utils.includesEvery(this.#title,array);
         }
         hasTags(array){
-            return blog.utils.includesEvery(this.tags,array);
+            return blog.utils.includesEvery(this.#tags,array);
         }
         hasTag(str){
             return this.hasTags([str]);
         }
         getUrl(){
-            return blog.articlesUrl+this.id+'/';
+            return blog.articlesUrl+this.#id+'/';
         }
         getCreatedDate(){
-            return this.dates[0];//最初の要素が作成日
+            return this.#dates[0];//最初の要素が作成日
         }
         isCreatedDate(year,month,day){
             return this.getCreatedDate().startsWith(articleDateFormat.format(year,month,day));
@@ -96,7 +100,7 @@ blog.article=function(id,title,dates,tags){
             return articleDateFormat.display(this.getCreatedDate());
         }
         getLastModifiedDate(){
-            return this.dates[this.dates.length-1];//最後の要素が最終更新日
+            return this.#dates[this.#dates.length-1];//最後の要素が最終更新日
         }
         displayLastModifiedDate(){
             return articleDateFormat.display(this.getLastModifiedDate());

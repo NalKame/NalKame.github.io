@@ -11,8 +11,8 @@ debugMode={
     isDebug:function(){
         return sessionStorage.getItem(this.name)===this.value;
     },
-    console_log:function(msg){
-        if(this.isDebug()) console.log(msg);
+    console_log:function(...pv){
+        if(this.isDebug()) console.log(pv);
     },
     window_alert:function(msg){
         if(this.isDebug()) window.alert(msg);

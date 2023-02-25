@@ -26,6 +26,8 @@
         common.init(title);
         common.makeMainTitle(title);
         common.headerLinkList.appendHomeLink();
+        //このページは完成まで表示しない todo:ページ完成後以下を削除
+        if(!debugMode.isDebug())location.href='./articles/';
     </script>
     <script type="text/javascript" src="/latest/loading_latest.js"></script>
 </body>
