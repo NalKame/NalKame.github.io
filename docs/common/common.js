@@ -25,15 +25,18 @@ const common={
         append:function(href,text){
             const $header_link_list=document.getElementById('header_link_list');
             if($header_link_list===null)throw new Error('$header_link_list is null');//無ければエラー
-            const $a=document.createElement("a");
+            const $a=document.createElement('a');
             $a.href=href;
             $a.innerText=text;
-            const $li=document.createElement("li");
+            const $li=document.createElement('li');
             $li.appendChild($a);
             $header_link_list.appendChild($li);
         },
         appendHomeLink:function(){
-            this.append("/","ホーム");
+            this.append('/','ホーム');
+        },
+        appendBlogTopLink:function(){
+            this.append('/blog/','ブログTOP');
         }
     },
     makeFooter:function(){

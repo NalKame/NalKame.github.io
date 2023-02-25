@@ -14,7 +14,7 @@
     <main>
         <div id="main_title"></div>
         <div id="contents">
-            おすすめとか、初めての方へとか
+            一覧とか
         </div>
     </main>
     <footer></footer>
@@ -22,10 +22,11 @@
     <script type="text/javascript" src="/common/common.js"></script>
     <script type="text/javascript" src="/blog/blog.js"></script>
     <script type="text/javascript">
-        const title='ブログTOP';
+        const title='ブログ記事';
         common.init(title);
         common.makeMainTitle(title);
         common.headerLinkList.appendHomeLink();
+        common.headerLinkList.appendBlogTopLink();
     </script>
     <script type="text/javascript" src="/latest/loading_latest.js"></script>
 </body>
