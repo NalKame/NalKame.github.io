@@ -37,6 +37,9 @@ const common={
         },
         appendBlogTopLink:function(){
             this.append('/blog/','ブログTOP');
+        },
+        appendHistoryBack:function(){
+            this.append('javascript:history.back();','戻る')
         }
     },
     makeFooter:function(){

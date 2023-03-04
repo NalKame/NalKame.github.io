@@ -93,6 +93,9 @@ blog.article=function(id,title,dates,tags){
         getTitle(){
             return this.#title;
         }
+        getTags(){
+            return this.#tags;
+        }
         getCreatedDate(){
             return this.#dates[0];//最初の要素が作成日
         }
@@ -145,12 +148,36 @@ blog.getAllArticles=function(){
     const arrayAllArticles=[
         /*id,title,dates,tags*/
     ];
+    //以下debug用の追加
     if(blog.getDebugMode().isDebug()){
         for(let i=0;i<102;i++){
             const article=blog.article(String(i),'debug'+i,['2023/03/04'],['debug',String(i)]);
             arrayAllArticles.push(article);
         }
+        arrayAllArticles.push(blog.article('debug','debug',['2023/03/05','2023/03/06'],['debug','test','aaa','#$%&']));
     }
     //最新を初めに表示したいのでreverse
     return blog.wrapArticles(arrayAllArticles.reverse());
+}
+
+blog.getThisPageAritcle=function(){
+    //記事ページの中で呼び出すとそのページのArticleを取得する
+    /*全検索するので重くなったら、
+    ページ開く前にsessionStorage保存などを検討する */
+    const pathname=window.location.pathname;
+    const article_id=pathname.replaceAll(blog.articlesUrl,'').split('/')[0];
+    const article=blog.getAllArticles().getById(article_id);
+    if(!debugMode?.isDebug()||article){
+        //debugでないかarticleが存在すればarticleを返す
+        return article;
+    }else{
+        //debug時でarticleが見つからない場合はdebugのものを返す
+        return blog.getAllArticles().getById('debug');
+    }
+}
+
+blog.getTagSearchUrl=function(tag){
+    const params=new URLSearchParams();
+    params.append('tag',tag);//nameはsearchページと合わせる
+    return '/blog/search/?'+params.toString();
 }

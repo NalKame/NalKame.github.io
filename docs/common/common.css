@@ -83,7 +83,7 @@ footer .kame_icon{
 /*main_title*/
 #main_title{
     width:100%;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid gray;
     margin-bottom: 10px;
 }
 #main_title>h1{

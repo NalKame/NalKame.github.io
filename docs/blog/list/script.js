@@ -67,9 +67,8 @@ class Pages{
         return common.getURLSearchParamValue(Pages.#PAGE_NUM_PARAM);
     }
     gotoPage(){
-        const obj={};
-        obj[Pages.#PAGE_NUM_PARAM]=this.#now;
-        const params=new URLSearchParams(obj);
+        const params=new URLSearchParams();
+        params.append(Pages.#PAGE_NUM_PARAM,this.#now);
         window.location.href='./?'+params.toString();
     }
 }
