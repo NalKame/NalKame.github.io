@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <style>
+        #articleList li{
+            margin:7px 0;
+            list-style:none;
+        }
+        #wrap_buttons{
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="contents">
+            <ul id="articleList">
+            </ul>
+            <div id="wrap_buttons">
+                <button id="btnFirst">最初へ</button>
+                <button id="btnPrev">前へ</button>
+                <span id="pageNum"></span>
+                <button id="btnNext">次へ</button>
+                <button id="btnLast">最後へ</button>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="./script.js?ver=0"></script><!--このhtml専用のscriptなので個別でversion管理-->
+    <script type="text/javascript">
+        const title='ブログ記事一覧';
+        common.init(title);
+        common.makeMainTitle(title);
+        common.headerLinkList.appendHomeLink();
+        common.headerLinkList.appendBlogTopLink();
+        {
+            const NUM_ONE_PAGE=10;//1ページ当たりの表示
+            const pageNum=Pages.getPageNum();
+            const pages=new Pages(blog.getAllArticles().getArrayArticles(),NUM_ONE_PAGE,pageNum);
+            console.log(pages)
+            const array=pages.getArrayInPage();
+            const $articleList=document.getElementById('articleList');
+            for(const article of array){
+                const $li=document.createElement('li');
+                const $a=document.createElement('a');
+                $a.href=article.getUrl();
+                $a.innerText=article.getTitle();
+                $li.appendChild($a);
+                $articleList.appendChild($li);
+            }
+            const $pageNum=document.getElementById('pageNum');
+            $pageNum.innerText=pages.getDisplayPageNum();
+            document.getElementById('btnFirst').addEventListener('click',
+                function(){
+                    pages.first().gotoPage();
+                }
+            );
+            document.getElementById('btnPrev').addEventListener('click',
+                function(){
+                    pages.prev().gotoPage();
+                }
+            );
+            document.getElementById('btnNext').addEventListener('click',
+                function(){
+                    pages.next().gotoPage();
+                }
+            );
+            document.getElementById('btnLast').addEventListener('click',
+                function(){
+                    pages.last().gotoPage();
+                }
+            );
+        }
+    </script>
+    <script ></script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>
+</body>
+</html>

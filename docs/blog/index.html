@@ -8,13 +8,33 @@
     <link rel="icon" href="/common/image/favicon.ico">
     <link rel="stylesheet" href="/common/common.css">
     <link rel="stylesheet" href="/blog/blog.css">
+    <style>
+        .item{
+            margin: 5px;
+        }
+        .item>p{
+            margin-left:1em;
+        }
+    </style>
 </head>
 <body>
     <header></header>
     <main>
         <div id="main_title"></div>
         <div id="contents">
-            おすすめとか、初めての方へとか
+            <div class="item">
+                <h2>初めての方へ</h2>
+                <p><a id="firstArticleLink">最初の記事へのリンクを設定する予定</a></p>
+            </div>
+            <div class="item">
+                <h2>最新記事</h2>
+                <p><a id="newArticleLink" href=""></a></p>
+            </div>
+            <div class="item">
+                <h2>記事を探す</h2>
+                <p><a href="./list/">記事一覧</a></p>
+                <p><a href="./search/">記事検索</a></p>
+            </div>
         </div>
     </main>
     <footer></footer>
@@ -26,8 +46,13 @@
         common.init(title);
         common.makeMainTitle(title);
         common.headerLinkList.appendHomeLink();
-        //このページは完成まで表示しない todo:ページ完成後以下を削除
-        if(!debugMode.isDebug())location.href='./articles/';
+        const articles=blog.getAllArticles();
+        {//最新記事
+            const $newArticleLink=document.getElementById('newArticleLink');
+            const newArticle=articles.getNewArticle();
+            $newArticleLink.href=newArticle.getUrl();
+            $newArticleLink.innerText=newArticle.getTitle();
+        }
     </script>
     <script type="text/javascript" src="/latest/loading_latest.js"></script>
 </body>

@@ -7,9 +7,15 @@
     <title>DebugBlog</title>
 </head>
 <body>
-
+    <form>
+        <input name="p">
+        <button type="submit">submit</button>
+    </form>
     <script type="text/javascript" src="/debug/debugMode.js"></script>
     <script type="text/javascript" src="/common/common.js"></script>
     <script type="text/javascript" src="/blog/blog.js"></script>
+    <script>
+        document.getElementsByName('p')[0].value=common.getURLSearchParamValue('p');
+    </script>
 </body>
 </html>

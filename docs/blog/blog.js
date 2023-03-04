@@ -84,11 +84,14 @@ blog.article=function(id,title,dates,tags){
         hasTags(array){
             return blog.utils.includesEvery(this.#tags,array);
         }
-        hasTag(str){
-            return this.hasTags([str]);
+        isId(id){
+            return this.#id===id;
         }
         getUrl(){
             return blog.articlesUrl+this.#id+'/';
+        }
+        getTitle(){
+            return this.#title;
         }
         getCreatedDate(){
             return this.#dates[0];//最初の要素が作成日
@@ -107,4 +110,47 @@ blog.article=function(id,title,dates,tags){
         }
     }
     return new Article(id,title,dates,tags);
+}
+
+blog.wrapArticles=function(arrayArticles){
+    class Articles{
+        #arrayArticles;
+        constructor(arrayArticles){
+            this.#arrayArticles=arrayArticles;
+        }
+        getArrayArticles(){return this.#arrayArticles;}
+        searchTitle(text){
+            const array=blog.utils.convertTextToArray(text);
+            this.#arrayArticles=this.#arrayArticles.filter(v=>v.titleIncludes(array));
+            return this;
+        }
+        searchTags(text){
+            const array=blog.utils.convertTextToArray(text);
+            this.#arrayArticles=this.#arrayArticles.filter(v=>v.hasTags(array));
+            return this;
+        }
+        getById(id){
+            return this.#arrayArticles.find(v=>v.isId(id));
+        }
+        getNewArticle(){
+            //通常の表示で最新が先に並ぶようにするため最初の要素が最新
+            return this.#arrayArticles[0];
+        }
+    }
+    return new Articles(arrayArticles);
+}
+
+blog.getAllArticles=function(){
+    //最後にひっくり返すので最新が後ろでok
+    const arrayAllArticles=[
+        /*id,title,dates,tags*/
+    ];
+    if(blog.getDebugMode().isDebug()){
+        for(let i=0;i<102;i++){
+            const article=blog.article(String(i),'debug'+i,['2023/03/04'],['debug',String(i)]);
+            arrayAllArticles.push(article);
+        }
+    }
+    //最新を初めに表示したいのでreverse
+    return blog.wrapArticles(arrayAllArticles.reverse());
 }

@@ -71,5 +71,11 @@ const common={
         const $elements=document.getElementsByTagName(tagName);
         if($elements.length===0)return null;
         return $elements[0];
+    },
+    getURLSearchParams:function(){
+        return new URLSearchParams(window.location.search);
+    },
+    getURLSearchParamValue:function(key){
+        return this.getURLSearchParams().get(key);
     }
 };
