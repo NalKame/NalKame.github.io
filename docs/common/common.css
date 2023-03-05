@@ -94,7 +94,11 @@ footer .kame_icon{
 #contents{
     padding: 0 30px;
 }
-
+@media (min-width:300px){
+    #contents{
+        padding:0 10vw;
+    }
+}
 /*Home他、主要ページの設定(必要があれば上書きする)*/
 h2{
     font-weight: bolder;

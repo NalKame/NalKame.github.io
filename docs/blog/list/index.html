@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="/common/common.css">
     <link rel="stylesheet" href="/blog/blog.css">
     <style>
+        #articleList{
+            padding-left:0;
+            min-height: 300px;
+        }
         #articleList li{
             margin:7px 0;
             list-style:none;
@@ -54,9 +58,7 @@
             const $articleList=document.getElementById('articleList');
             for(const article of array){
                 const $li=document.createElement('li');
-                const $a=document.createElement('a');
-                $a.href=article.getUrl();
-                $a.innerText=article.getTitle();
+                const $a=article.createLinkElement();
                 $li.appendChild($a);
                 $articleList.appendChild($li);
             }

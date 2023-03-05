@@ -111,6 +111,12 @@ blog.article=function(id,title,dates,tags){
         displayLastModifiedDate(){
             return articleDateFormat.display(this.getLastModifiedDate());
         }
+        createLinkElement(){
+            const $a=document.createElement('a');
+            $a.href=this.getUrl();
+            $a.innerText=this.#title;
+            return $a;
+        }
     }
     return new Article(id,title,dates,tags);
 }
@@ -147,6 +153,7 @@ blog.getAllArticles=function(){
     //最後にひっくり返すので最新が後ろでok
     const arrayAllArticles=[
         /*id,title,dates,tags*/
+        blog.article('20230305_start','Kamemoについて',['2023/03/05'],['初めての方へ','サイト作成'])
     ];
     //以下debug用の追加
     if(blog.getDebugMode().isDebug()){
