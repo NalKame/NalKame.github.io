@@ -1,6 +1,14 @@
 :root{
     --blogCssVersion:0;
 }
+/* 点なしul用*/
+.articleList{
+    padding-left:0;
+}
+.articleList li{
+    margin:7px 0;
+    list-style:none;
+}
 /* template0の設定 */
 body#template0 #dates{
     display: flex;

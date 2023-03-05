@@ -9,6 +9,35 @@
     <link rel="stylesheet" href="/common/common.css">
     <link rel="stylesheet" href="/blog/blog.css">
     <style>
+        #searching_wrap{
+            width:500px;
+            max-width:100%;
+        }
+        #searching,#searching_text{
+            justify-content:center;
+            align-items: flex-end;
+        }
+        #searching_text>div{
+            margin-top:10px;
+            margin-right:10px;
+        }
+        .flex{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #btn_search{
+            width: 100px;
+            margin-top:10px;
+        }
+        #searched{
+            margin-top: 40px;
+        }
+        #searched h2{
+            margin-right: 20px;
+        }
+        .d-none{
+            display:none;
+        }
     </style>
 </head>
 <body>
@@ -17,11 +46,32 @@
         <div id="main_title"></div>
         <div id="contents">
             <form method="Get" action="./">
-                <div>タイトル検索</div>
-                <input type="text" name="title">
-                <div>タグ検索</div>
-                <input type="text" name="tag">
+                <h2>検索条件</h2>
+                <div id="searching_wrap">
+                    <div id="searching" class="flex">
+                        <div id="searching_text" class="flex">
+                            <div>
+                                <h3>タイトル</h3>
+                                <input type="text" name="title">
+                            </div>
+                            <div>
+                                <h3>タグ</h3>
+                                <input type="text" name="tag">
+                            </div>
+                        </div>
+                        <button id="btn_search" type="submit">検索</button>
+                    </div>
+                    </div>
             </form>
+            <div id="searched" class="d-none">
+                <div class="flex">
+                    <h2>検索結果</h2>
+                    <div><span id="hit_number"></span>件</div>
+                </div>
+                <div>
+                    <ul id="searchedArticleList" class="articleList"></ul>
+                </div>
+            </div>
         </div>
     </main>
     <footer></footer>
@@ -34,7 +84,42 @@
         common.makeMainTitle(title);
         common.headerLinkList.appendHomeLink();
         common.headerLinkList.appendBlogTopLink();
-
+        {
+            const searchingTitle=(common.getURLSearchParamValue('title')||'').trim();
+            const searchingTag=(common.getURLSearchParamValue('tag')||'').trim();
+            const displaySearched=function(flgDisplay){
+                const searchedElClassList=document.getElementById('searched').classList;
+                if(flgDisplay){
+                    searchedElClassList.remove('d-none');
+                }else{
+                    searchedElClassList.add('d-none');
+                }
+            }
+            if(searchingTitle||searchingTag){
+                //検索ボックスに入力
+                document.getElementsByName('title')[0].value=searchingTitle;
+                document.getElementsByName('tag')[0].value=searchingTag;
+                const $searchedArticleList=document.getElementById('searchedArticleList');
+                //全件取得のため遅くなったらリファクタリング
+                const articles=blog.getAllArticles();
+                const foundArticles=articles.searchTitle(searchingTitle).searchTags(searchingTag);
+                const array=foundArticles.getArrayArticles();
+                for(const article of array){
+                    const $li=document.createElement('li');
+                    const $a=article.createLinkElement();
+                    $li.appendChild($a);
+                    $searchedArticleList.appendChild($li);
+                }
+                //ヒット件数入力
+                $hit_number=document.getElementById('hit_number');
+                $hit_number.innerText=array.length;
+                //検索結果表示
+                displaySearched(true);
+            }else{
+                //検索結果がない時は隠す
+                displaySearched(false);
+            }
+        }
     </script>
     <script ></script>
     <script type="text/javascript" src="/latest/loading_latest.js"></script>

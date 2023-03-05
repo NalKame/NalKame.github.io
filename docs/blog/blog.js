@@ -157,7 +157,7 @@ blog.getAllArticles=function(){
     ];
     //以下debug用の追加
     if(blog.getDebugMode().isDebug()){
-        for(let i=0;i<102;i++){
+        for(let i=0;i<10002;i++){
             const article=blog.article(String(i),'debug'+i,['2023/03/04'],['debug',String(i)]);
             arrayAllArticles.push(article);
         }
