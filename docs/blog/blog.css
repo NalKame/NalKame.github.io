@@ -38,3 +38,6 @@ body#template0 #contents{
     margin-top:10px;
     margin-bottom: 10px;
 }
+body#template0 #contents p{
+    text-indent:1em;
+}

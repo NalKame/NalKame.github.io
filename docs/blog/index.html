@@ -14,6 +14,7 @@
         }
         .item>p{
             margin-left:1em;
+            margin-bottom:3px;
         }
     </style>
 </head>
@@ -49,7 +50,7 @@
         {//全件取得のため遅くなったらリファクタリング
             const articles=blog.getAllArticles();
             //初めての方へ記事
-            const startingArticle=articles.getById('20230305_start');
+            const startingArticle=articles.getById('20230305');
             const $startingArticleLinkWrapper=document.getElementById('startingArticleLinkWrapper');
             $startingArticleLinkWrapper.appendChild(startingArticle.createLinkElement());
             //最新記事

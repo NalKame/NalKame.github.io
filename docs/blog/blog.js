@@ -149,24 +149,6 @@ blog.wrapArticles=function(arrayArticles){
     return new Articles(arrayArticles);
 }
 
-blog.getAllArticles=function(){
-    //最後にひっくり返すので最新が後ろでok
-    const arrayAllArticles=[
-        /*id,title,dates,tags*/
-        blog.article('20230305_start','Kamemoについて',['2023/03/05'],['初めての方へ','サイト作成'])
-    ];
-    //以下debug用の追加
-    if(blog.getDebugMode().isDebug()){
-        for(let i=0;i<10002;i++){
-            const article=blog.article(String(i),'debug'+i,['2023/03/04'],['debug',String(i)]);
-            arrayAllArticles.push(article);
-        }
-        arrayAllArticles.push(blog.article('debug','debug',['2023/03/05','2023/03/06'],['debug','test','aaa','#$%&']));
-    }
-    //最新を初めに表示したいのでreverse
-    return blog.wrapArticles(arrayAllArticles.reverse());
-}
-
 blog.getThisPageAritcle=function(){
     //記事ページの中で呼び出すとそのページのArticleを取得する
     /*全検索するので重くなったら、
@@ -187,4 +169,23 @@ blog.getTagSearchUrl=function(tag){
     const params=new URLSearchParams();
     params.append('tag',tag);//nameはsearchページと合わせる
     return '/blog/search/?'+params.toString();
+}
+
+/* 記事一覧 */
+blog.getAllArticles=function(){
+    //最後にひっくり返すので最新が後ろでok
+    const arrayAllArticles=[
+        /*id,title,dates,tags*/
+        blog.article('20230305','Kamemoについて',['2023/03/05','2023/03/11'],['初めての方へ','サイト作成'])
+    ];
+    //以下debug用の追加
+    if(blog.getDebugMode().isDebug()){
+        for(let i=0;i<10002;i++){
+            const article=blog.article(String(i),'debug'+i,['2023/03/04'],['debug',String(i)]);
+            arrayAllArticles.push(article);
+        }
+        arrayAllArticles.push(blog.article('debug','debug',['2023/03/05','2023/03/06'],['debug','test','aaa','#$%&']));
+    }
+    //最新を初めに表示したいのでreverse
+    return blog.wrapArticles(arrayAllArticles.reverse());
 }

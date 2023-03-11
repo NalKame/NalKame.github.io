@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents">
+            <p>
+                はじめまして。かめです。
+                自己紹介は<a href="/who.html">こちら</a>に譲ります。
+            </p>
+            <p>
+                大学院のころ書いていたpdfを画像化してtwitterにあげていたのですが、<!--
+            -->pdfとして公開していないのかと聞かれたことが、当サイト公開の発端です。<!--
+            -->そのとき紹介されたgithub.ioですが、そこから二年後に初めてgithub.ioを触り、<!--
+            -->さらに一年ほど経ち、ようやく準備が整いました。<!--
+            -->実のところtwitterの雲行きが怪しくなったので、<!--
+            -->いざとなったときに生存確認と移行先を示すものを作っておくのも良いなと思って着手したところもあります。<!--
+            -->イーロンマスク氏に感謝ですね。
+            </p>
+            <p>
+                そういうわけで、<a href="./pdf_storage/">PDF置き場</a>を作ってあります。<!--
+            -->過去に書いたpdfはおよそPCには残っており、googledriveにも保存してあるので、<!--
+            -->公開できそうなものを探して、微修正後公開していこうと思っています。<!--
+            -->加えて、過去のpdfを見て新しいものを書く機会が生まれたら良いなとも思っているので、<!--
+            -->何かあれば新しいpdfを公開するかもしれません。あまり期待しないでほしいですが、<!--
+            -->話題をご提供いただけるようであれば大変うれしいです。その際は<a href="/who.html">連絡先</a>までお願いします。
+            </p>
+            <p>
+                また、サイトを作ってみて、いろいろメモとして残しておきたいという気持ちになったことがあり、<!--
+            -->その影響でKamemoという名前になったところがあります。当サイト作成関連についてもブログに書ければと思います。<!--
+            -->この記事にも経緯が書かれているので、「サイト作成」のタグを入れておきました。<!--
+            -->記事下のタグをクリックすると同じタグを持った記事が表示されるようになっています。<!--
+            -->こういう機能を自作してるから公開まで時間かかったりもしましたが、これでしばらくネタに困らないかなとは思ってます。<!--
+            -->書く気力がわくかは別問題ですが。
+            </p>
+            <p>
+                どうしても、こういうものを続けられる性分でない気がしていて、わりと自信ないですが、<!--
+            -->やる気の持つ限りやっていきますので、よろしくお願いいたします。
+            </p>
+        </div>
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript">
+        const article=blog.getThisPageAritcle();
+        const title=article?.getTitle();
+        common.init(title);
+        common.makeMainTitle(title);
+        common.headerLinkList.appendBlogTopLink();
+        common.headerLinkList.appendHistoryBack();
+        {
+            const $created_date=document.getElementById('created_date');
+            const $last_modified_date=document.getElementById('last_modified_date');
+            $created_date.innerText=article?.displayCreatedDate();
+            $last_modified_date.innerText=article?.displayLastModifiedDate();
+        }
+        {
+            const $tags=document.getElementById('tags');
+            const tagArray=article?.getTags()||[];
+            for(const tag of tagArray){
+                const $a=document.createElement('a');
+                $a.href=blog.getTagSearchUrl(tag);
+                $a.innerText=tag;
+                $tags.appendChild($a);
+            }
+        }
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>
+</body>
+</html>
