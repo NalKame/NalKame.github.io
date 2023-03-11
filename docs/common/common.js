@@ -51,7 +51,8 @@ const common={
             <span class="link_who_wrapper">
                 <a class="link_who" href="/who.html">
                     <span class=my_name>NalKame</span>
-                    <img class="kame_icon" src="/common/image/kame_icon.png" alt="かめアイコン">                </a>
+                    <img class="kame_icon" src="/common/image/kame_icon.png" alt="かめアイコン">
+                </a>
             </span>
         </div>
         `;//複雑になったらajaxやiframeを検討
