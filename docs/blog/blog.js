@@ -164,12 +164,13 @@ blog.getThisPageAritcle=function(){
         return blog.getAllArticles().getById('debug');
     }
 }
-
 blog.getTagSearchUrl=function(tag){
     const params=new URLSearchParams();
     params.append('tag',tag);//nameはsearchページと合わせる
     return '/blog/search/?'+params.toString();
 }
+
+
 
 /* 記事一覧 */
 blog.getAllArticles=function(){

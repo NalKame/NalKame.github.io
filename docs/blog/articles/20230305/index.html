@@ -8,6 +8,7 @@
     <link rel="icon" href="/common/image/favicon.ico">
     <link rel="stylesheet" href="/common/common.css">
     <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
 </head>
 <body id="template0">
     <header></header>
@@ -17,10 +18,10 @@
             <div>作成日：<span id="created_date"></span></div>
             <div>最終更新日：<span id="last_modified_date"></span></div>
         </div>
-        <div id="contents">
+        <div id="contents" class="indentation">
             <p>
-                はじめまして。かめです。
-                自己紹介は<a href="/who.html">こちら</a>に譲ります。
+                はじめまして。かめです。<!--
+            -->自己紹介は<a href="/who.html">こちら</a>に譲ります。
             </p>
             <p>
                 大学院のころ書いていたpdfを画像化してtwitterにあげていたのですが、<!--
@@ -60,30 +61,10 @@
     <script type="text/javascript" src="/debug/debugMode.js"></script>
     <script type="text/javascript" src="/common/common.js"></script>
     <script type="text/javascript" src="/blog/blog.js"></script>
-    <script type="text/javascript">
-        const article=blog.getThisPageAritcle();
-        const title=article?.getTitle();
-        common.init(title);
-        common.makeMainTitle(title);
-        common.headerLinkList.appendBlogTopLink();
-        common.headerLinkList.appendHistoryBack();
-        {
-            const $created_date=document.getElementById('created_date');
-            const $last_modified_date=document.getElementById('last_modified_date');
-            $created_date.innerText=article?.displayCreatedDate();
-            $last_modified_date.innerText=article?.displayLastModifiedDate();
-        }
-        {
-            const $tags=document.getElementById('tags');
-            const tagArray=article?.getTags()||[];
-            for(const tag of tagArray){
-                const $a=document.createElement('a');
-                $a.href=blog.getTagSearchUrl(tag);
-                $a.innerText=tag;
-                $tags.appendChild($a);
-            }
-        }
-    </script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+        <script type="text/javascript">
+            blog_template0.init('Kamemoについて');
+        </script>
     <script type="text/javascript" src="/latest/loading_latest.js"></script>
 </body>
 </html>

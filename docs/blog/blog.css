@@ -9,35 +9,6 @@
     margin:7px 0;
     list-style:none;
 }
-/* template0の設定 */
-body#template0 #dates{
-    display: flex;
-    flex-wrap:wrap;
-    justify-content:right;
-    border-bottom: 1px solid gray;
-    padding-left: 30px;
-}
-body#template0 #dates>div{
-    margin:0 10px;
-}
-body#template0 #tags{
-    display: flex;
-    flex-wrap:wrap;
-    justify-content:left;
-    border-top: 1px solid gray;
-    padding: 0 30px;
-}
-body#template0 #tags>p{
-    width:100%;
-    margin: 5px;
-}
-body#template0 #tags>a{
-    margin: 2px 5px;
-}
-body#template0 #contents{
-    margin-top:10px;
-    margin-bottom: 10px;
-}
-body#template0 #contents p{
+p.indentation,.indentation p{
     text-indent:1em;
 }

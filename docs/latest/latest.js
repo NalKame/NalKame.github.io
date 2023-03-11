@@ -28,6 +28,8 @@
     versions.push(new AssertEqual('commonCss',getCssProperty('--commonCssVersion'),'0'));
     if(typeof blog!=='undefined')versions.push(new AssertEqual('blogJs',blog?.version,'0'));
     versions.push(new AssertEqual('blogCss',getCssProperty('--blogCssVersion'),'0'));
+    if(typeof blog_template0!=='undefined')versions.push(new AssertEqual('blogTemplate0Js',blog_template0?.version,'0'));
+    versions.push(new AssertEqual('blogTemplate0Css',getCssProperty('--blogTemplate0CssVersion'),'0'));
     //とりあえずdebug時コンソール出力
     getDebugMode().console_log(versions);
     for(const assert of versions){
