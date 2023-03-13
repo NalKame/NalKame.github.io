@@ -91,11 +91,11 @@ footer .kame_icon{
     font-size: 1.3em;
 }
 /*contents*/
-#contents{
+#contents,.contents{
     padding: 0 30px;
 }
 @media (min-width:300px){
-    #contents{
+    #contents,.contents{
         padding:0 10vw;
     }
 }

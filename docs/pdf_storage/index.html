@@ -14,6 +14,9 @@
         .description{
             margin-left:1em;
         }
+        .d-none{
+            display:none;
+        }
     </style>
 </head>
 <body>
@@ -24,13 +27,31 @@
             <section>
                 <h2>過去のサルベージ(2022まで)</h2>
                 <p>過去作成したpdfを修正してupします。</p>
-                <div class="item">
+                <div id="temperature_entropy" class="item">
                     <div class="pdf"><a href="./until2022/temperature_entropy.pdf" target="_new">温度の定義とエントロピー</a></div>
                     <div class="description">
-                        <p>熱力学の温度とエントロピーについてと、統計力学のエントロピーとの関係について。</p>
+                        <p>熱力学の法則に沿いつつ、熱力学温度やエントロピーについて説明し、統計力学のエントロピーとの整合性について説明しています。</p>
+                        <p>国際単位の定義が変更されたあたりで作ったので、温度の新旧の定義にも触れています。</p>
+                    </div>
+                </div>
+                <div id="" class="item">
+                    <div class="pdf"><a href="./until2022/toukei_taisu.pdf" target="_new">大数の法則と中心極限定理</a></div>
+                    <div class="description">
+                        <p>統計の本を複数人で書こうとしたときの残骸1つ目。</p>
+                        <p>大数の法則と中心極限定理を、グラフを用いて説明しています。</p>
+                    </div>
+                </div>
+                <div id="" class="item">
+                    <div class="pdf"><a href="./until2022/toukei_joukentuki.pdf" target="_new">条件付確率</a></div>
+                    <div class="description">
+                        <p>統計の本を複数人で書こうとしたときの残骸2つ目。</p>
+                        <p>条件付確率についてベン図で説明しています。</p>
                     </div>
                 </div>
             </section>
+        </div>
+        <div id="displayOneItem" class="contents d-none">
+            <div id="copy_item"></div>
         </div>
     </main>
     <footer></footer>
@@ -41,6 +62,13 @@
         common.init(title);
         common.makeMainTitle(title);
         common.headerLinkList.appendHomeLink();
+        const param_item=common.getURLSearchParamValue("item");
+        if(param_item){
+            document.getElementById('contents').classList.add('d-none');
+            document.getElementById('displayOneItem').classList.remove('d-none');
+            document.getElementById('copy_item').innerHTML=document.getElementById(param_item).innerHTML;
+            common.headerLinkList.append('./','pdf一覧');
+        }
     </script>
     <script type="text/javascript" src="/latest/loading_latest.js"></script>
 </body>
