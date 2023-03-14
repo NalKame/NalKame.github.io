@@ -177,7 +177,8 @@ blog.getAllArticles=function(){
     const arrayAllArticles=[
         /*id,title,dates,tags*/
         blog.article('20230305','Kamemoについて',['2023/03/05','2023/03/11'],['初めての方へ','サイト作成']),
-        blog.article('20230311','ロゴを自作した',['2023/03/11'],['サイト作成','ロゴ・アイコン'])
+        blog.article('20230311','ロゴを自作した',['2023/03/11'],['サイト作成','ロゴ・アイコン']),
+        blog.article('20230314','キャッシュについて',['2023/03/14'],['サイト作成','WEB','初めての方へ'])
     ];
     //以下debug用の追加
     if(blog.getDebugMode().isDebug()){

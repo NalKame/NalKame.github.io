@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents" class="indentation">
+            <p>
+                キャッシュという仕組みがある。<!--
+            -->一度アクセスしたページやファイルをブラウザなどが記憶しており、次にアクセスしたときは記憶してあるものを表示する。<!--
+            -->これによって、何度も通信が発生しないという素晴らしい仕組みである。
+            </p>
+            <p>
+                しかし、これのせいでサイトを更新しても反映されないことがある。<!--
+            -->間違いがないのは、URLにクエリ文字列(?a=b&c=dみたいなやつ)で時間とかバージョンをいれて別のURL扱いにするのが早いのだが、<!--
+            -->今使っているgithub.ioは静的ファイルを返すだけなので、jsやcssに一括でバージョンをつけて管理するのは難しい。<!--
+            -->ちょっと調べたのだが、htmlファイル自体のキャッシュ回避用のmetaタグもHTML5で使えなくなったみたい。
+            </p>
+            <p>
+                一応、<a href="/latest/loading_latest.js">loading_latest.js</a>を使って<a href="/latest/latest.js">latest.js</a>を時間のパラメータ付きで読み込むようにはしているが、<!--
+            -->デバグ用のコードしか書いてない。何かどうしても必要になったら、これを使って何らかの対応をするつもりではある。<!--
+            -->ただ、基本的には対応できないので、キャッシュのせいで更新が反映されないことがあることはご承知おき願いたい。<!--
+            -->ということで、一応、タグに「初めての方へ」を入れておく。
+            </p>
+            <p>
+                キャッシュが効いて更新が反映されないときは、スーパーリロードやキャッシュ削除をすればよいのだが、<!--
+            -->具体的にはブラウザによるので「スーパーリロード」とか「キャッシュ削除」でググってください。<!--
+            -->一応、Windowsならだいたい「Ctrl+F5」でスーパーリロードできる。
+            </p>
+        </div>
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('キャッシュについて');
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>
+</body>
+</html>
