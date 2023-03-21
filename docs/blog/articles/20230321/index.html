@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents" class="indentation">
+            <p>
+                GitHubのアクセストークンの期限が切れた。30日期限とはいえ早いものである。<!--
+            -->これを使って、ローカルからプッシュしているので、更新が必要となる。
+            </p>
+            <div>
+                発行手順は以下の通り。
+                <ol style="margin:0;">
+                    <li>GitHubサインインする。</li>
+                    <li>右上のユーザメニューからSettingを開く。</li>
+                    <li>左側のメニューからDeveloper settingsを開く。</li>
+                    <li>左側のメニューのPersonal access tokensからtokensを選ぶ。</li>
+                    <li>Generate new tokenより作成ページを開く。</li>
+                    <li>noteは分かりやすく作成日等いれて分かりやすくしておけばok。</li>
+                    <li>Expirationはとりあえずデフォルトの30日を使っている。</li>
+                    <li>Select scopesだが、あまりよく確認していないが、pushしたいのでrepoにチェック。</li>
+                    <li>Generate tokenをクリックすると新しく作られる。</li>
+                    <li>ここで表示されるトークンを保存しておく。</li>
+                </ol>
+                ちなみに、古くなったものはPersonal access tokensのページで削除しておいた。
+            </div>
+            <div style="margin-top:10px;">
+                credential.helperで認証情報を記憶させておく。<code>git config</code>は、<code>user.name</code>や<code>user.email</code>を登録するのにも使用したコマンド。<br>
+                以下をGit Bashで実行する。ファイル名は何でもよいし、<code>--file</code>を省略してもデフォルトのファイル名で保存されるが、一応日付をいれて区別しておいている。
+                <pre><code>git config --global credential.helper 'store --file ~/.git-credentials-20230321'</code></pre>
+                その後、<code>git push</code>等を行い、認証として要求されるGitHubのユーザ名を入れ、パスワードでは保存しておいたトークンを入力すればpushとともに認証情報の記録もされる。
+            </div>
+            <p>これで30日また認証情報入れることなく、pushできる。</p>
+            <div style="margin-top:20px;">
+                参考ページ<br>
+                <a href="https://rfs.jp/server/git/github/personal_access_tokens.html">https://rfs.jp/server/git/github/personal_access_tokens.html</a><br>
+                残念なことに、<code>cache</code>で保存するのは、<code>credential-cache unavailable</code>や<code>credential-cache is disabled in this build of Git</code>でエラーになってしまった。<!--
+            -->他の誰もこのPCは使わないのでとりあえず平文保存は飲むことにした。更新するときに気が向いたら調べようと思う。
+            </div>
+        </div>
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('GitHubアクセストークン更新');
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>
+</body>
+</html>
