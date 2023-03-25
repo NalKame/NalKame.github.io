@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <script type="text/javascript" src="/common/analytics.js"></script>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents" class="indentation">
+            <p>
+                <a href="https://analytics.google.com/">Google Analytics</a>をこのサイトに設定してみました。
+            </p>
+            <p>
+                タグを挟み込めば、アクセスが見られるのだが、全ページにコピペするのも、後々変更したい時などに困りそうなので、<!--
+            --><a href="/common/analytics.js">javascript</a>で挿入している。
+            </p>
+            <p>
+                数日たったが、こんな感じで表示されていた。当然ながらそんなにアクセスはない。
+                <img src="./google_analytics.PNG" alt="google_analytics" style="max-width:100%;width:500px;">
+            </p>
+            <p>
+                とはいえ、少しでもアクセスがあるのが分かったほうがやる気がわくという面もある。
+            </p>
+        </div>
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('Google Analytics を設定した');
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>
+</body>
+</html>

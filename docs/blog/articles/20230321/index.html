@@ -43,13 +43,15 @@
             <div style="margin-top:10px;">
                 credential.helperで認証情報を記憶させておく。<code>git config</code>は、<code>user.name</code>や<code>user.email</code>を登録するのにも使用したコマンド。<br>
                 以下をGit Bashで実行する。ファイル名は何でもよいし、<code>--file</code>を省略してもデフォルトのファイル名で保存されるが、一応日付をいれて区別しておいている。
-                <pre><code>git config --global credential.helper 'store --file ~/.git-credentials-20230321'</code></pre>
+                <div>
+                    <code>git config --global credential.helper 'store --file ~/.git-credentials-20230321'</code>
+                </div>
                 その後、<code>git push</code>等を行い、認証として要求されるGitHubのユーザ名を入れ、パスワードでは保存しておいたトークンを入力すればpushとともに認証情報の記録もされる。
             </div>
             <p>これで30日また認証情報入れることなく、pushできる。</p>
             <div style="margin-top:20px;">
-                参考ページ<br>
-                <a href="https://rfs.jp/server/git/github/personal_access_tokens.html">https://rfs.jp/server/git/github/personal_access_tokens.html</a><br>
+                <!--リンクが切れていたのでコメントアウト-->
+                <!-- <a href="https://rfs.jp/server/git/github/personal_access_tokens.html">参考ページ</a><br> -->
                 残念なことに、<code>cache</code>で保存するのは、<code>credential-cache unavailable</code>や<code>credential-cache is disabled in this build of Git</code>でエラーになってしまった。<!--
             -->他の誰もこのPCは使わないのでとりあえず平文保存は飲むことにした。更新するときに気が向いたら調べようと思う。
             </div>
