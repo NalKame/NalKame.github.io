@@ -184,14 +184,15 @@ blog.getAllArticles=function(){
         blog.article('20230320','小田原に行った。ういろうを買った。',['2023/03/20','2023/03/21'],['旅行']),
         blog.article('20230321','GitHubアクセストークン更新',['2023/03/21','2023/03/25'],['git','Github','サイト作成']),
         blog.article('20230325','Google Analytics を設定した',['2023/03/25'],['サイト作成']),
-    ];
+        blog.article('20230326','Debugモードについて',['2023/03/26'],['サイト作成','debug']),
+        ];
     //以下debug用の追加
     if(blog.getDebugMode().isDebug()){
         for(let i=0;i<10002;i++){
             const article=blog.article(String(i),'debug'+i,['2023/03/04'],['debug',String(i)]);
             arrayAllArticles.push(article);
         }
-        arrayAllArticles.push(blog.article('debug','debug',['2023/03/05','2023/03/06'],['debug','test','aaa','#$%&']));
+        arrayAllArticles.push(blog.article('debug','debug',['2023/03/05','2023/03/06','2023/03/26'],['debug','test','aaa','#$%&']));
     }
     //最新を初めに表示したいのでreverse
     return blog.wrapArticles(arrayAllArticles.reverse());
