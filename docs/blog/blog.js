@@ -185,6 +185,7 @@ blog.getAllArticles=function(){
         blog.article('2023/0321','GitHubアクセストークン更新',['2023/03/21','2023/03/25'],['git','Github','サイト作成']),
         blog.article('2023/0325','Google Analytics を設定した',['2023/03/25'],['サイト作成']),
         blog.article('2023/0326','Debugモードについて',['2023/03/26'],['サイト作成','debug']),
+        blog.article('2023/0327','PDF「大数の法則と中心極限定理」と「条件付確率」について',['2023/03/27'],['PDF','数学','統計']),
         ];
     //以下debug用の追加
     if(blog.getDebugMode().isDebug()){
