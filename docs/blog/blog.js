@@ -154,7 +154,7 @@ blog.getThisPageAritcle=function(){
     /*全検索するので重くなったら、
     ページ開く前にsessionStorage保存などを検討する */
     const pathname=window.location.pathname;
-    const article_id=pathname.replaceAll(blog.articlesUrl,'').split('/')[0];
+    const article_id=pathname.replaceAll(blog.articlesUrl,'').replaceAll('index.html','').slice(0,-1);
     const article=blog.getAllArticles().getById(article_id);
     if(!debugMode?.isDebug()||article){
         //debugでないかarticleが存在すればarticleを返す
@@ -192,7 +192,7 @@ blog.getAllArticles=function(){
             const article=blog.article(String(i),'debug'+i,['2023/03/04'],['debug',String(i)]);
             arrayAllArticles.push(article);
         }
-        arrayAllArticles.push(blog.article('debug','debug',['2023/03/05','2023/03/06','2023/03/26'],['debug','test','aaa','#$%&']));
+        arrayAllArticles.push(blog.article('debug/debug','debug',['2023/03/05','2023/03/06','2023/03/26'],['debug','test','aaa','#$%&']));
     }
     //最新を初めに表示したいのでreverse
     return blog.wrapArticles(arrayAllArticles.reverse());
