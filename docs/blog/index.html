@@ -51,7 +51,7 @@
         {//全件取得のため遅くなったらリファクタリング
             const articles=blog.getAllArticles();
             //初めての方へ記事
-            const startingArticle=articles.getById('20230305');
+            const startingArticle=articles.getById('2023/0305');
             const $startingArticleLinkWrapper=document.getElementById('startingArticleLinkWrapper');
             $startingArticleLinkWrapper.appendChild(startingArticle.createLinkElement());
             //最新記事
