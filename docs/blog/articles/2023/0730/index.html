@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <script type="text/javascript" src="/common/analytics.js"></script>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents" class="indentation">
+            <p>ご無沙汰しておりました。</p>
+            <p>
+                一旦落ち着いてしまうと、わざわざ記事追加することがないというのが正直なところですが、<!--
+            -->言い訳をするのであれば、ノートパソコンの調子が悪くなり、新しく購入し環境構築等していたのもあります。
+            </p>
+            <p>
+                ブラウザ(Chrome,Firefox)、エディタ(VSCode,サクラエディタ)、Adobe Acrobat、WinMergeや7-Zip、そしてGit Bashあたりが<!-- 
+            -->とりあえず使うので入れました。あとLINEか。いずれまた移行はしなければならないので、入れてるものはメモがてらあげておきました。<!--
+            -->gccとかJavaとかも自分のソースコードは持ってるので使うときにはインストールしないといけないが、しばらく使ってないので使うときでと思ってます。<!--
+            -->Javaは以前しばらく使ってなかったら使ってないならいらないんじゃないみたいな通知を出してこられた記憶があります。
+            </p>
+            <p>
+                本題のTeXの環境なわけですが、<a href="https://texwiki.texjp.org/?TeX%20Live%2FWindows">TeXLiveのインストール</a>をしたところ、<!--
+            -->これが時間もかかるし、失敗してやり直しになるはで、面倒でした。
+            </p>
+            <p>
+                このサイトでは<a href="/pdf_storage/">PDFの公開(TeX使えるかの確認のため一つ新しくサルベージしました。)</a>をしているわけですが、これはTeXを使っているので、誤植修正のためにも編集できる環境は必要です。<!--
+            -->ただ論文執筆するわけでもないですし、手間に見合ってないので、<a href="https://ja.overleaf.com/">overleaf</a>も使ってみました。<!--
+            -->共著論文の作成時に使用したことはある(Web上での共同編集がoverleafの強みですよね)のですが、自分のアカウントでは入ったことがなかったのでGoogleアカウントで登録しました。
+            </p>
+            <p>
+                ローカルに既存で持っている.texファイルをアップすれば編集できましたが、日本語のコンパイルに引っ掛かりました。<!--
+            -->これ自体はTeXworksでも引っ掛かりがちなやつですね。<!--
+            --><a href="https://doratex.hatenablog.jp/entry/20180503/1525338512">こちら</a>を参考に、latexmkrcというファイルをプロジェクトに追加するとコンパイルできました。<!--
+            -->全然使えそうです。しばらく次回の環境構築は来ないと思いますが、overleafだけで生きていっても良いのかなと思いました。
+            </p>            
+        </div>
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('TeXのコンパイルについて');
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>
+</body>
+</html>
