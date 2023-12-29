@@ -24,7 +24,7 @@
         return debugMode;
     }
     const versions=[];
-    if(typeof common!=='undefined')versions.push(new AssertEqual('commonJs',common?.version,'0'));
+    if(typeof common!=='undefined')versions.push(new AssertEqual('commonJs',common?.version,'0.1'));
     versions.push(new AssertEqual('commonCss',getCssProperty('--commonCssVersion'),'0'));
     if(typeof blog!=='undefined')versions.push(new AssertEqual('blogJs',blog?.version,'0'));
     versions.push(new AssertEqual('blogCss',getCssProperty('--blogCssVersion'),'0'));
