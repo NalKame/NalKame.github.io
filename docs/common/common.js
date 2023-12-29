@@ -1,10 +1,11 @@
 const common={
-    version:'0',
+    version:'0.1',
     site_name:'Kamemo',
     init:function(page_title){
         this.makeHeader();
         this.makeFooter();
         this.makeTitle(page_title);
+        this.deleteNewLine();
     },
     makeHeader:function(){
         const $header=this.getFirstElementByTagName('header');
@@ -67,7 +68,7 @@ const common={
     makeMainTitle:function(main_title_text){
         const $main_title=document.getElementById('main_title');
         if($main_title===null)return;//無ければ未設定
-        const $h1=document.createElement("h1");
+        const $h1=document.createElement('h1');
         $h1.innerText=main_title_text?main_title_text:'';
         $main_title.appendChild($h1);
     },
@@ -81,5 +82,11 @@ const common={
     },
     getURLSearchParamValue:function(key){
         return this.getURLSearchParams().get(key);
+    },
+    deleteNewLine:function(){
+        const $deleteNewLines=document.getElementsByClassName('deleteNewLine');
+        for(const $el of $deleteNewLines){
+            $el.innerHTML=$el.innerHTML.replace(/\s*\n\s*/g,'').replace(/\s*\r\s*/g,'');
+        }
     }
 };

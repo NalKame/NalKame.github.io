@@ -19,8 +19,22 @@
             <div>作成日：<span id="created_date"></span></div>
             <div>最終更新日：<span id="last_modified_date"></span></div>
         </div>
-        <div id="contents" class="indentation deleteNewLine">
-            こちらに記事を記載する。
+        <div id="contents" class="indentation deleteNewLine">   
+            <p>
+                <a href="https://zenn.dev/jiin/articles/370909a1c56f5a">参考記事</a>にあるように、
+                HTML内の改行は基本スペースと解釈されて表示される。
+                cssのwhite-spaceでも改行や改行前後のインデントを完全に無視することはできないようである。
+            </p>
+            <p>
+                そこで、これまでは仕方なくHTML記述時に見やすくするための改行を入れたいときは、
+                改行とインデントをコメントアウトすることで対処していた。
+                しかし、これはいちいち手間であった。
+            </p>
+            <p>
+                今回、deleteNewLineクラスをつけた要素内のHTMLから改行とその前後のスペースを削除するjavascriptのコードを書いた。
+                これにより、記事部分にクラスを設定しておけば、いちいちコメントアウトを入れずにかくことができる。
+                なお、段落についてはこれまで通りpタグで分けている。
+            </p>
         </div>
         <div id="tags">
             <p>タグ</p>
@@ -32,7 +46,7 @@
     <script type="text/javascript" src="/blog/blog.js"></script>
     <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
     <script type="text/javascript">
-        blog_template0.init('こちらにタイトルを入力する');
+        blog_template0.init('インライン要素内改行で空白が入る問題の解決');
     </script>
     <script type="text/javascript" src="/latest/loading_latest.js"></script>
 </body>
