@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <script type="text/javascript" src="/common/analytics.js"></script>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents" class="indentation">   
+            <p>
+                ChatGPTに指示だししていってこんなものが作れた。GPT-4o強すぎて笑ってしまった。
+            </p>
+            <a href="./chart_correlation_ChatGPT/chart_correlation.html">散布図と相関係数</a>
+        </div>
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('ChatGPTに散布図から相関係数を計算するプログラムを作らせた。');
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>   
+    <!-- 以下、今回のみ用 -->
+    <script type="text/javascript" src="./dateProgress.js"></script>
+    <script type="text/javascript" src="./textProgressbar.js"></script>
+    <script>
+        const textProgressbar=new TextProgresbar();
+        textProgressbar.setSize(20);
+        textProgressbar.setEmptyMark("　")
+        const debugDate=common.getURLSearchParamValue('debugDate');
+        const createProgressbar=function(){
+            const progress=dateProgress(debugDate);
+            const now=progress.now;
+            {//year
+                const rate=progress.year.rate;
+                document.getElementById("year").innerText=now.getFullYear();
+                document.getElementById("percentYear").innerText=Math.round(rate*100);
+                document.getElementById("progressYear").value=rate;
+                document.getElementById("progressTextYear").innerText=textProgressbar.createProgressbar(rate);
+            }
+            {//month
+                const rate=progress.month.rate;
+                document.getElementById("month").innerText=now.getMonth()+1;
+                document.getElementById("percentMonth").innerText=Math.round(rate*100);
+                document.getElementById("progressMonth").value=rate;
+                document.getElementById("progressTextMonth").innerText=textProgressbar.createProgressbar(rate);
+            }
+            {//date
+                const rate=progress.date.rate;
+                document.getElementById("date").innerText=now.getDate();
+                document.getElementById("percentDate").innerText=Math.round(rate*100);
+                document.getElementById("progressDate").value=rate;
+                document.getElementById("progressTextDate").innerText=textProgressbar.createProgressbar(rate);
+            }         
+            setTimeout(createProgressbar,1000);   
+        }
+        createProgressbar();
+    </script>
+</body>
+</html>

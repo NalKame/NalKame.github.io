@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>散布図と相関係数</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        canvas {
+            border: 1px solid black;
+            background-color: #ffffff;
+        }
+        .controls, .dataset-controls {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .controls > *, .dataset-controls > * {
+            margin: 5px;
+        }
+        #correlationContainer {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        button, select, input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button:hover, select:hover, input:hover {
+            border-color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>散布図と相関係数</h1>
+    <canvas id="scatterPlot" width="600" height="600"></canvas>
+    <button id="toggleCorrelationButton">相関係数の表示/非表示</button>
+    <div id="correlationContainer">
+        <p>相関係数: <span id="correlation">N/A</span></p>
+    </div>
+    <div class="controls">
+        <button id="undoButton">元に戻す</button>
+        <button id="clearButton">プロットをクリア</button>
+    </div>
+    <div class="dataset-controls">
+        <input type="text" id="dataSetName" placeholder="データセット名を入力">
+        <button id="saveButton">プロットデータを保存</button>
+        <select id="dataSelect"></select>
+        <button id="loadButton">選択したデータを読み込み</button>
+        <button id="deleteButton">選択したデータを削除</button>
+    </div>
+    <script src="scatter_plot.js"></script>
+</body>
+</html>
