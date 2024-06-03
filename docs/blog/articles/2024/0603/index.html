@@ -21,9 +21,22 @@
         </div>
         <div id="contents" class="indentation">   
             <p>
-                ChatGPTに指示だししていってこんなものが作れた。GPT-4o強すぎて笑ってしまった。
+                二つの確率変数の関係を知るための値として相関係数というのがある。
+                困ったときのWikipediaは<a href="https://ja.wikipedia.org/wiki/%E7%9B%B8%E9%96%A2%E4%BF%82%E6%95%B0">こちら</a>。
             </p>
-            <a href="./chart_correlation_ChatGPT/chart_correlation.html">散布図と相関係数</a>
+            <p>
+                数学的な能力とは言えないが、いろんな散布図を自分で適当にプロットして、
+                その相関係数を見極められたら面白そうだと感じたので、
+                そのようなプログラムを組んでみようと思った。
+                意外といろいろやりたいことがあり、自分で書くのも手間なのでChatGPTに書いてもらうことにした。
+            </p>
+            <p>
+                ChatGPTに指示だししていくとこんなものが作れた。GPT-4oが強すぎて笑ってしまった。
+                書き換えも指示を出しただけで自分で一切ソースを触っていない。やばすぎる。
+            </p>
+            <p><a href="./chart_correlation_ChatGPT/chart_correlation.html">散布図と相関係数</a></p>
+            <p>もう説明も任せればよいのではということで聞いておいた。</p>
+            <p><a href="./explain_correlation.html">ChatGPTによる相関係数の説明。</a></p>
         </div>
         <div id="tags">
             <p>タグ</p>
@@ -38,41 +51,5 @@
         blog_template0.init('ChatGPTに散布図から相関係数を計算するプログラムを作らせた。');
     </script>
     <script type="text/javascript" src="/latest/loading_latest.js"></script>   
-    <!-- 以下、今回のみ用 -->
-    <script type="text/javascript" src="./dateProgress.js"></script>
-    <script type="text/javascript" src="./textProgressbar.js"></script>
-    <script>
-        const textProgressbar=new TextProgresbar();
-        textProgressbar.setSize(20);
-        textProgressbar.setEmptyMark("　")
-        const debugDate=common.getURLSearchParamValue('debugDate');
-        const createProgressbar=function(){
-            const progress=dateProgress(debugDate);
-            const now=progress.now;
-            {//year
-                const rate=progress.year.rate;
-                document.getElementById("year").innerText=now.getFullYear();
-                document.getElementById("percentYear").innerText=Math.round(rate*100);
-                document.getElementById("progressYear").value=rate;
-                document.getElementById("progressTextYear").innerText=textProgressbar.createProgressbar(rate);
-            }
-            {//month
-                const rate=progress.month.rate;
-                document.getElementById("month").innerText=now.getMonth()+1;
-                document.getElementById("percentMonth").innerText=Math.round(rate*100);
-                document.getElementById("progressMonth").value=rate;
-                document.getElementById("progressTextMonth").innerText=textProgressbar.createProgressbar(rate);
-            }
-            {//date
-                const rate=progress.date.rate;
-                document.getElementById("date").innerText=now.getDate();
-                document.getElementById("percentDate").innerText=Math.round(rate*100);
-                document.getElementById("progressDate").value=rate;
-                document.getElementById("progressTextDate").innerText=textProgressbar.createProgressbar(rate);
-            }         
-            setTimeout(createProgressbar,1000);   
-        }
-        createProgressbar();
-    </script>
 </body>
 </html>
