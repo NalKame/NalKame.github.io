@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相関係数の説明</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <h1>相関係数の説明</h1>
+    <p>相関係数（そうかんけいすう、Correlation Coefficient）は、2つの変数の間の相関（つまり、どれだけ2つの変数が互いに関連しているか）を示す統計的な尺度です。最も一般的に使用されるのは、ピアソンの積率相関係数（Pearson's correlation coefficient）です。以下に、相関係数についての詳細を説明します。</p>
+
+    <h2>ピアソンの積率相関係数</h2>
+
+    <h3>定義</h3>
+    <p>ピアソンの積率相関係数 \( r \) は、次の式で定義されます：</p>
+    <p>
+        \[
+        r = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum (X_i - \bar{X})^2 \sum (Y_i - \bar{Y})^2}}
+        \]
+    </p>
+    <p>ここで：</p>
+    <ul>
+        <li>\( X_i \) と \( Y_i \) は、それぞれの変数 \( X \) と \( Y \) のデータポイント。</li>
+        <li>\( \bar{X} \) と \( \bar{Y} \) は、それぞれの変数 \( X \) と \( Y \) の平均値。</li>
+    </ul>
+
+    <h3>特徴</h3>
+    <ul>
+        <li><strong>範囲</strong>：相関係数 \( r \) は -1 から 1 までの値をとります。
+            <ul>
+                <li>\( r = 1 \) は完全な正の相関を意味し、変数 \( X \) が増加する時に \( Y \) も増加します。</li>
+                <li>\( r = -1 \) は完全な負の相関を意味し、変数 \( X \) が増加する時に \( Y \) は減少します。</li>
+                <li>\( r = 0 \) は相関がないことを意味します。</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>解釈</h3>
+    <ul>
+        <li><strong>正の相関</strong>：\( 0 < r \leq 1 \)
+            <ul>
+                <li>\( r \) が 1 に近いほど、強い正の相関を示します。</li>
+            </ul>
+        </li>
+        <li><strong>負の相関</strong>：\( -1 \leq r < 0 \)
+            <ul>
+                <li>\( r \) が -1 に近いほど、強い負の相関を示します。</li>
+            </ul>
+        </li>
+        <li><strong>相関がない</strong>：\( r \approx 0 \)
+            <ul>
+                <li>\( r \) が 0 に近い場合、変数間に線形な関係がないことを示します。</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>使用例</h3>
+    <p>相関係数は、さまざまな分野で使用されます。例えば：</p>
+    <ul>
+        <li><strong>経済学</strong>：消費と所得の関係を分析する際。</li>
+        <li><strong>心理学</strong>：テストスコアと学業成績の関係を調べる際。</li>
+        <li><strong>生物学</strong>：体重と身長の関係を調べる際。</li>
+    </ul>
+
+    <h3>注意点</h3>
+    <ul>
+        <li>相関係数は、2つの変数の間の線形関係を測定しますが、非線形な関係を検出することはできません。</li>
+        <li>相関が因果関係を示すわけではありません。相関があるからといって、一方の変数が他方の変数を引き起こすわけではないことに注意が必要です。</li>
+    </ul>
+
+    <p>相関係数は、データ分析や統計的な推測において非常に重要なツールであり、データのパターンを理解し、関連性を探るのに役立ちます。</p>
+</body>
+</html>
