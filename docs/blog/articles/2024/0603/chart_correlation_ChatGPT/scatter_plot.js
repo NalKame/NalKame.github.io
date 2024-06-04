@@ -8,12 +8,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const correlationText = document.getElementById('correlation');
     const dataSetNameInput = document.getElementById('dataSetName');
 
+    // デバイスのピクセル密度を考慮してキャンバスのスケールを設定
+    const dpi = window.devicePixelRatio;
+    const styleHeight = parseInt(getComputedStyle(canvas).getPropertyValue('height'), 10);
+    const styleWidth = parseInt(getComputedStyle(canvas).getPropertyValue('width'), 10);
+    canvas.setAttribute('height', styleHeight * dpi);
+    canvas.setAttribute('width', styleWidth * dpi);
+
     updateDataSelect();
+
+    let pointSize = 3; // デフォルトのポイントサイズ
+
+    // スマホ用にポイントサイズを変更する
+    if (window.innerWidth <= 600) {
+        pointSize = 6; // スマホの場合のポイントサイズ
+    }
 
     canvas.addEventListener('click', (event) => {
         const rect = canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = canvas.height - (event.clientY - rect.top); // Y座標を上向き正に変換
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const x = (event.clientX - rect.left) * scaleX;
+        const y = canvas.height - (event.clientY - rect.top) * scaleY; // Y座標を上向き正に変換
 
         points.push({ x, y });
         drawPoint(x, canvas.height - y); // 描画時にY座標を再度変換
@@ -85,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function drawPoint(x, y) {
         ctx.beginPath();
-        ctx.arc(x, y, 3, 0, Math.PI * 2, true);
+        ctx.arc(x, y, pointSize, 0, Math.PI * 2, true); // ポイントサイズを使用
         ctx.fill();
     }
 
