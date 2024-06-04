@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     canvas.addEventListener('click', (event) => {
         const rect = canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = canvas.height - (event.clientY - rect.top); // Y座標を上向き正に変換
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const x = (event.clientX - rect.left) * scaleX;
+        const y = canvas.height - (event.clientY - rect.top) * scaleY; // Y座標を上向き正に変換
 
         points.push({ x, y });
         drawPoint(x, canvas.height - y); // 描画時にY座標を再度変換
