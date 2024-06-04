@@ -8,6 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const correlationText = document.getElementById('correlation');
     const dataSetNameInput = document.getElementById('dataSetName');
 
+    // デバイスのピクセル密度を考慮してキャンバスのスケールを設定
+    const dpi = window.devicePixelRatio;
+    const styleHeight = parseInt(getComputedStyle(canvas).getPropertyValue('height'), 10);
+    const styleWidth = parseInt(getComputedStyle(canvas).getPropertyValue('width'), 10);
+    canvas.setAttribute('height', styleHeight * dpi);
+    canvas.setAttribute('width', styleWidth * dpi);
+
     updateDataSelect();
 
     canvas.addEventListener('click', (event) => {
