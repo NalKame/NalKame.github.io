@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <style>
+        button{
+            margin:5px;
+        }
+    </style>
+    <script type="text/javascript" src="/common/analytics.js"></script>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents">   
+            <div  class="indentation deleteNewLine">
+                <p>
+                    <a href="../0603/">ひとつ前の記事</a>に引き続いて、
+                    10パズル（4つの1桁の数字を四則演算して10をつくる）もChatGPTの力を借りつつ作りました。
+                    こちらは自力も入っています。
+                </p>
+                <p>
+                    細かなルールとしては四則演算(+,-,×,÷)と括弧のみ使用可能で数字の並べ替えは可能です。
+                    また、解答は一例です。
+                </p>
+            </div>
+            <div style="margin-top:20px;">
+                <div>                    
+                    <h3>問題</h3>
+                    <div id="question"></div>
+                </div>               
+                <div id="wrapAnswer" style="display: none;">
+                    <h3>答え</h3>
+                    <div id="answer"></div>
+                </div>
+                <div>
+                    <button id="btnDisplayAnswer">答え表示切替</button>
+                </div> 
+                <div style="margin-top:10px;">                    
+                    <button id="createQuestion">問題再作成</button>
+                </div>
+            </div>
+        </div>
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('10パズルも作ってみました。');
+    </script>
+    <script type="text/javascript" src="./ten_puzzle.js"></script>
+    <script>
+        {   const displayQuestionAnswer=function(){
+                const {question,answer}=generateQuestion();
+                document.getElementById("question").innerText=question;
+                document.getElementById("answer").innerText=answer;
+            }
+            document.getElementById("createQuestion").addEventListener("click",function(){
+                displayQuestionAnswer();
+            });
+            document.getElementById("btnDisplayAnswer").addEventListener("click",function(){
+                const wrap=document.getElementById("wrapAnswer");
+                wrap.style.display = wrap.style.display === 'none' ? 'block' : 'none';
+            });
+
+            displayQuestionAnswer();
+        }
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>   
+</body>
+</html>
