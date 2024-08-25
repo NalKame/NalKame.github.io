@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <style>
+        .accordion__summary {
+            position: relative;
+            cursor: pointer;
+            padding: 10px 38px 10px 10px;
+            }
+        .accordion__summary::-webkit-details-marker {
+            display: none;
+        }
+        .accordion__detail {
+            padding: 4px 10px;
+            margin: 10px 0;
+        }
+    </style>
+    <script type="text/javascript" src="/common/analytics.js"></script>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents">   
+            <div  class="indentation deleteNewLine">
+                <p>
+                    麻雀の同種の数牌の並びを出力するプログラムを組んだ。
+                </p>
+                <p>
+                    1枚の場合、単純に1~9である。
+                </p>
+                <p>
+                    2枚の場合、対子のパターンが9種、塔子では連続するのが両面6種と辺張2種、間が1つあくのが嵌張7種である。
+                    2つ以上あくパターン21種は孤立牌の組み合わせだが、1,4など有効牌が被る場合は通常の孤立牌よりも優先度が下がるといったことがある。
+                    3枚以上はそれぞれ検討していきたい。
+                </p>
+            </div>
+            <div id="results"></div>
+        </div>
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('麻雀 同種数牌の組み合わせを調べる。');
+    </script>
+    <script src="./mahjong_katachi/mahjong_katachi.js"></script>
+    <script>
+        builMahjongKatachiDOMElements(1,13);
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>   
+</body>
+</html>
