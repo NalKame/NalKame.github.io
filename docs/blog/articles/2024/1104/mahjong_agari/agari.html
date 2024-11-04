@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>和了・聴牌JSON</title>
+    <style>
+        div{
+            margin-bottom: 1em;;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        JSON形式で取得している。<br>
+        kazuは同色の数牌、ziは字牌(7種のため1~7)についての各枚数ごとの和了パターンである。<br>
+        なお、14枚に満たない分は別種の牌で揃っていると考える。
+    </div>
+    <div id="main">
+    </div>
+    <script src="../../0825/mahjong_katachi/mahjong_katachi.js"></script>
+    <script src="./mahjong_agari.js"></script>
+    <script>
+        const obj={"kazu":{},"zi":{}};
+        for(let i=1;i<=14;i++){
+            const katachi=mahjong_katachi(i).map(t=>t.join(""));
+            const kazu_agari=katachi.filter(t=>MahjongChinnitsu.instance(t).isAgari());
+            const zi_agari=katachi.filter(t=>t.match(/[^1-7]+/g)===null).filter(t=>MahjongZihai.instance(t).isAgari());
+            obj["kazu"][i]=kazu_agari;
+            obj["zi"][i]=zi_agari;
+        }
+        document.getElementById("main").innerText=JSON.stringify(obj);
+    </script>
+</body>
+</html>

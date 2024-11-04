@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table td {
+            padding:2px;
+            border: 1px solid black;
+            min-width: 5em;
+        }
+    </style>
+    <script type="text/javascript" src="/common/analytics.js"></script>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents">   
+            <div  class="indentation deleteNewLine">
+                <p>
+                    今回は同種数牌の和了、聴牌を調べるプログラムを組んだ。(七対子、国士無双は無視)
+                    順子を無視し7種に限定すれば字牌もわかるためその判定も行える。
+                    <a href="../0825/">以前の手牌の形を列挙するプログラム</a>と組み合わせて、
+                    和了しているパターンを出力したのが<a href="./mahjong_agari/agari.html">こちら</a>。
+                </p>
+            </div>
+            <div style="margin-top: 2em;">
+                <p>以下に数字の列をいれてボタン「調べる」を押せば和了、聴牌を判定する。</p>
+                <p>数字以外を含むなど判定できないときは空、和了や聴牌でなければ×を表示する。</p>
+                <p>和了判定では順子刻子対子に分割して表示する。複数の分け方がある場合は複数行になる。</p>
+                <p>聴牌判定では待ち牌の数値を表示する。</p>
+                <p>ただし七対子、国士無双は無視し、13,14枚に足りない分は別種の牌で和了形が揃っているとする。</p>
+                <div style="margin-top: 1em;">
+                    <input type="text" id="text_nums"><button id="btn_search">調べる</button>
+                    <div style="margin-top: 0.5em;">
+                        <table>
+                            <tr>
+                                <td>和了</td>
+                                <td id="result_agari"></td>
+                            </tr>
+                            <tr>
+                                <td>聴牌</td>
+                                <td id="result_tempai"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('麻雀 同種数牌で和了、聴牌を調べる。');
+    </script>
+    <script src="./mahjong_agari/mahjong_agari.js"></script>
+    <script>
+        const displayResult=function(agari,tempai){
+            const $result_agari=document.getElementById("result_agari");
+            const $result_tempai=document.getElementById("result_tempai");
+            $result_agari.innerText=agari;
+            $result_tempai.innerText=tempai;
+        }
+        const $btn_search=document.getElementById("btn_search");
+        $btn_search.onclick=function(){
+            const $text_nums=document.getElementById("text_nums");
+            const nums=$text_nums.value;
+            if(nums.match(/[^1-9]+/g)!==null){
+                displayResult("","");
+                return;
+            }
+            const mahjong=MahjongChinnitsu.instance(nums);
+            const agari=(()=>{                
+                const array=mahjong.judgeAgari();
+                if(array.length===0)return "×";
+                return array.map(el=>el.join(",")).join("\n");
+            })();
+            const tempai=(()=>{                
+                const array=mahjong.judgeTempai();
+                if(array.length===0)return "×";
+                return array.join(",");
+            })();
+            displayResult(agari,tempai);
+        }
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>   
+</body>
+</html>

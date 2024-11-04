@@ -17,7 +17,7 @@ function mahjong_katachi(num){
     return results;
 }
 
-function builMahjongKatachiDOMElements(pBegin,pEnd){
+function buildMahjongKatachiDOMElements(pBegin,pEnd){
     const begin=pBegin;
     const end=pEnd===undefined?pBegin:pEnd;
     const elResults=document.getElementById("results");
