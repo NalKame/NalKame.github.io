@@ -47,6 +47,7 @@ class MahjongChinnitsu{
             }
             return {idx,maisu};
         })();        
+        if(target.maisu>4)return ret;
         if(hasAtama&&target.maisu>=2){//toitsu
             const strToitsu=String(target.idx+1)+String(target.idx+1);
             const newArray=pArray.concat();
@@ -155,6 +156,7 @@ class MahjongZihai{
             }
             return {idx,maisu};
         })();        
+        if(target.maisu>4)return ret;
         if(hasAtama&&target.maisu>=2){//toitsu
             const strToitsu=String(target.idx+1)+String(target.idx+1);
             const newArray=pArray.concat();
