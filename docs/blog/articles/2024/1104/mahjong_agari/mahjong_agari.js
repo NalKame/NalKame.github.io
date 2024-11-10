@@ -16,6 +16,7 @@ class MahjongChinnitsu{
     judgeAgari(pArray){
         let ret=[];
         if(pArray===undefined)pArray=this.array;
+        if(pArray.filter(t=>(t>4)).length!==0)return ret;//4枚越えがあればそのまま返す
         const n=pArray.reduce((sum, el) => sum + el, 0);
         if(n>14)return ret;//14枚超えはそのまま返す
         if(n===0){//0のときは空の配列を入れて返す
@@ -46,8 +47,7 @@ class MahjongChinnitsu{
                 idx++;
             }
             return {idx,maisu};
-        })();        
-        if(target.maisu>4)return ret;
+        })();
         if(hasAtama&&target.maisu>=2){//toitsu
             const strToitsu=String(target.idx+1)+String(target.idx+1);
             const newArray=pArray.concat();
@@ -125,6 +125,7 @@ class MahjongZihai{
     judgeAgari(pArray){
         let ret=[];
         if(pArray===undefined)pArray=this.array;
+        if(pArray.filter(t=>(t>4)).length!==0)return ret;//4枚越えがあればそのまま返す
         const n=pArray.reduce((sum, el) => sum + el, 0);
         if(n>14)return ret;//14枚超えはそのまま返す
         if(n===0){//0のときは空の配列を入れて返す。
@@ -155,8 +156,7 @@ class MahjongZihai{
                 idx++;
             }
             return {idx,maisu};
-        })();        
-        if(target.maisu>4)return ret;
+        })();
         if(hasAtama&&target.maisu>=2){//toitsu
             const strToitsu=String(target.idx+1)+String(target.idx+1);
             const newArray=pArray.concat();
