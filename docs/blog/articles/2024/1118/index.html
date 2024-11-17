@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <link rel="stylesheet" href="./MahjongTileFont/MahjongTileFont.css">
+    <script type="text/javascript" src="/common/analytics.js"></script>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents">   
+            <div class="indentation deleteNewLine">
+                <p>
+                    Unicodeの1F000～1F02Fの範囲に麻雀牌があるので以下のように利用できる。
+                    花牌はともかく、百塔牌は見慣れない気がします。オールマイティー牌らしいです。
+                </p>
+                <div>🀀🀁🀂🀃🀄🀅🀆🀇🀈🀉🀊🀋🀌🀍🀎🀏🀐🀑🀒🀓🀔🀕🀖🀗🀘🀙🀚🀛🀜🀝🀞🀟🀠🀡🀢🀣🀤🀥🀦🀧🀨🀩🀪🀫</div>
+            </div>                   
+            <div class="indentation deleteNewLine">
+                <p>
+                    端末により以下の画像のように🀄だけ表示がおかしくなっていることがある。結構一般的に起こる現象です。
+                    例えばWindows環境では他の牌はSegoe UI Symbolのなかで🀄だけSegoe UI Emojiになっているようです。
+                    調べると、麻雀そのものを示す絵文字として🀄が使われたためといった話はでてきます。
+                </p>
+                <img style="max-width: 100%;" src="./麻雀牌_中の表示.png" alt="麻雀牌の中だけ表示が異なる">
+            </div> 
+            <div class="indentation deleteNewLine">     
+                <p>
+                    しかも、Firefoxでは単純にfontfamilyにSegoe UI Symbolを指定しても勝手にSegoe UI Emojiにしてきたりして言うことを聞きません。
+                    これ自体は@font-faceでunicodeの範囲指定をすると解決しました。
+                    <a href="./MahjongTileFont/MahjongTileFont.css" target="_blank" rel="noopener noreferrer">こちらのcss</a>で
+                    LocalFontMahjongTileとして指定しているものになります。これでもかなりマシになると思います。
+                    MacPCやiPhoneは私が持っていないのでわかりませんが、使っているWindowsのEdge,Chrome,Firefox、AndroidのChromeではうまく表示されていました。
+                    以下の通りです。
+                </p>
+                <div style="font-family:'LocalFontMahjongTile';">🀀🀁🀂🀃🀄🀅🀆🀇🀈🀉🀊🀋🀌🀍🀎🀏🀐🀑🀒🀓🀔🀕🀖🀗🀘🀙🀚🀛🀜🀝🀞🀟🀠🀡🀢🀣🀤🀥🀦🀧🀨🀩🀪🀫</div>    
+            </div>
+            <div class="indentation deleteNewLine"> 
+                <p>
+                    ただ、webフォントを読み込んでしまったほうが確実といえます。
+                    先ほどのcssにあるとおりGL-MahjongTileを利用しました。
+                    これについての説明は<a href="./MahjongTileFont/GL-MahjongTileについて.html" target="_blank" rel="noopener noreferrer">こちら</a>です。
+                    指定すると以下のようになる。
+                </p>
+                <div class="mahjong-tile">🀀🀁🀂🀃🀄🀅🀆🀇🀈🀉🀊🀋🀌🀍🀎🀏🀐🀑🀒🀓🀔🀕🀖🀗🀘🀙🀚🀛🀜🀝🀞🀟🀠🀡🀢🀣🀤🀥🀦🀧🀨🀩🀪🀫</div>
+            </div>
+            <div class="indentation deleteNewLine">
+                <p>
+                    このままでは小さいのでサイズを大きくした指定も用意しました。
+                </p>
+                <div class="mahjong-tile-2em">🀀🀁🀂🀃🀄🀅🀆🀇🀈🀉🀊🀋🀌🀍🀎🀏🀐🀑🀒🀓🀔🀕🀖🀗🀘🀙🀚🀛🀜🀝🀞🀟🀠🀡🀢🀣🀤🀥🀦🀧🀨🀩🀪🀫</div>
+            </div>
+        </div>     
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('Unicodeに登録された麻雀牌');
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>   
+</body>
+</html>
