@@ -24,3 +24,11 @@
 .mahjong-tile-2em{
     font-size: 2em;/*そのままだと小さいので大きくする*/
 }
+.mahjong-tile-rotate{
+    display: inline-block;
+    margin-left:0.125em;
+    transform: rotate(-90deg);
+}
+.akadora{
+    color:red;
+}
