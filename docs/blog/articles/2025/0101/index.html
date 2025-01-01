@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <script type="text/javascript" src="/common/analytics.js"></script>
+    <style>
+        .sosu{
+            color:red;
+        }
+    </style>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents">   
+            <div class="indentation deleteNewLine">
+                <p>
+                    2025年が始まってしまった。あけましておめでとうございます。
+                    20250101は素数らしい。ということで今年の日付を素因数分解して素数の日は赤色にしておいた。
+                    今年もよろしくお願いいたします。
+                </p>
+            </div>     
+            <div id="calendar">
+            </div>              
+        </div>     
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('素因数分解カレンダー');
+    </script>
+    <script type="text/javascript" src="./20250101.js"></script>   
+    <script>
+        const $calendar=document.getElementById("calendar");
+        const dates=getDatesForYear(2025);
+        for(const date of dates){
+            const $date=document.createElement("div");
+            const strDate=formatDateToYyyymmdd(date);
+            const intDate=Number.parseInt(strDate);
+            const factors=primeFactorization(intDate);
+            const strFactors=factors.join("×");
+            $date.innerHTML=strDate+"="+strFactors;
+            if(factors.length===1){
+                $date.classList.add("sosu");
+            }
+            $calendar.append($date);
+        }
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>   
+</body>
+</html>
