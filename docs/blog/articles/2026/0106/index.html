@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <script type="text/javascript" src="/common/analytics.js"></script>
+    <style>
+        .sosu{
+            color:red;
+        }
+    </style>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents">   
+            <div class="indentation deleteNewLine">
+                <p>
+                    あけましておめでとうございます。更新せず1年たってしまった。
+                </p>
+                <p>
+                    Excelの列名と列数を変換するコードを書いてみました。
+                    以下に列数を数値でいれるか、列名を大文字アルファベットで入れると変換してくれます。
+                </p>
+            </div>  
+            <div>
+                <div>
+                    <input type="text" id="input">
+                    <button id="button">変換</button>
+                </div>
+                <div id="message">
+                </div>
+            </div>   
+            <div class="indentation deleteNewLine">
+                <p>
+                    列名から列数は正直に26×(何桁目か-1)×(何個目のアルファベットか)の和で計算できますが、
+                    列数から列名に変換しようとすると、A=1,Z=26と0がないことから、
+                    剰余で一桁目を求めるために1引いてから剰余を出して1足した値でアルファベットに変換する必要があります。
+                    <a href="./excel_column.js">excel_column.js</a>の以下の箇所になります。
+                </p>
+            </div>  
+            <div>
+                <pre>
+number--; // 0始まりに調整
+code = String.fromCharCode(65 + (number % 26)) + code;
+number = Math.floor(number / 26);
+                </pre>
+            </div>            
+            <div class="indentation deleteNewLine">
+                <p>
+                    この方式はbijective numerationというらしい。
+                    （<a href="https://en.wikipedia.org/wiki/Bijective_numeration">wikipedia参考</a>）
+                </p>
+                <p>
+                    0がないことにより、前ゼロを考慮しなくてよくなり、ありうる文字列と自然数が完全に1対1対応するものである。
+                    10進を考えるとわかるが0を含まない数字は通常つかうものと同じであるが、0を含む場合は上の桁から借りてきて表記を変える必要がある。
+                    さらに1進数というのも可能になっている。1を並べた数がその数であり非常に単純であるがおもしろい。
+                    小数は桁を増やす時にかならず最小の値が1ではいってしまうため破綻しているという特徴もある。
+                </p>
+                <p>
+                    bを基数、d<sup>n</sup>を桁ごとの値とすると、
+                    Σ<sub>n</sub>d<sub>n</sub>b<sup>n</sup>で数字をあらわすというのが位取り記数法の基本的な形であり、
+                    今回はd<sup>n</sup>のとりうる範囲を+1ずらしたことになる。
+                    bやdの範囲の変更で様々な拡張がありうるようであり、大変おもしろい。
+                    b=3でd={-1,0,1}とする平衡三進法は負数へも自然に拡張されるし、
+                    bを黄金比にして小数の形式も使って整数を表したり、bを複素数にしてガウス整数を表現したり、いろいろ広がりがある。
+                </p>
+            </div> 
+            <div id="calendar">
+            </div>              
+        </div>     
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('bijective numeration - Excelの列名は単純な26進数ではない');
+    </script>
+    <script type="text/javascript" src="./excel_column.js"></script>   
+    <script>
+        const $input = document.getElementById("input");
+        const $button = document.getElementById("button");
+        const $message = document.getElementById("message");
+        $button.addEventListener("click",function(){
+            $message.innerText = "";
+            const str = $input.value;
+            const num = parseFloat(str);
+            try{
+                if(Number.isNaN(num)){
+                    const obj = ExcelColumn.instance(str);
+                    $message.innerText = str+"列は"+obj.getNumber()+"列目です。";
+                }else{
+                    const obj = ExcelColumn.instance(num);
+                    $message.innerText = num+"列目は"+obj.getCode()+"列です。";
+                }
+            }catch(e){
+                $message.innerText = "変換できません。整数か大文字アルファベットのみ使用できます。";
+            }
+        });
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>   
+</body>
+</html>
