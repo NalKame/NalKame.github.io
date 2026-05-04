@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>占い</title>
+		<style>
+			.d-none{
+				display:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<textarea id="input"></textarea>
+			<br>
+			<button id="generateBtn">プロンプト生成</button>
+		</div>
+		<div>
+		    <pre id="prompt"></pre>
+		    <button id="copyBtn" class="d-none">プロンプトコピー</button>
+		</div>
+		<script src="./uranai.js"></script>
+		<script> 
+			const $input = document.getElementById("input");
+			const $generateBtn = document.getElementById("generateBtn");
+			const $prompt = document.getElementById("prompt");
+			const $copyBtn = document.getElementById("copyBtn");
+			$generateBtn.addEventListener("click",function(){ 
+				const input = $input.value;
+				const prompt = uranai.generatePrompt(input);
+				$prompt.innerText = prompt;
+				$copyBtn.classList.remove("d-none");
+			});
+			$copyBtn.addEventListener("click", function () {
+			    const text = $prompt.innerText;
+			    if (!text) return;
+
+			    navigator.clipboard.writeText(text).then(() => {
+			        $copyBtn.innerText = "コピー済み";
+			        setTimeout(() => $copyBtn.innerText = "コピー", 1500);
+			    });
+			});
+		</script>
+	</body>
+</html>

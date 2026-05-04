@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/common/image/favicon.ico">
+    <link rel="stylesheet" href="/common/common.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/articles/template0/template0.css">
+    <script type="text/javascript" src="/common/analytics.js"></script>
+    <style>
+        .sosu{
+            color:red;
+        }
+    </style>
+</head>
+<body id="template0">
+    <header></header>
+    <main>
+        <div id="main_title"></div>
+        <div id="dates">
+            <div>作成日：<span id="created_date"></span></div>
+            <div>最終更新日：<span id="last_modified_date"></span></div>
+        </div>
+        <div id="contents">
+            <div class="indentation deleteNewLine">
+                <h3 style="font-weight: bold;">node.jsをいれる</h3>
+                <p>
+                    <a href="https://nodejs.org/ja/download">こちら</a>からインストーラを落とし、
+                    node.jsをインストールする。
+                </p>
+            </div> 
+            <div>
+                <h3 style="font-weight: bold;">TypeScriptをいれる</h3>
+                <p>
+                    コマンドプロンプトを開いて、以下実行する。
+                    <pre>npm install -g typescript</pre>
+                    -gでPC全体にインストールできるようだ。バージョン確認は以下。
+                    <pre>tsc -v</pre>
+                </p>
+            </div>
+            <div id="calendar">
+            </div>              
+        </div>     
+        <div id="tags">
+            <p>タグ</p>
+        </div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="/debug/debugMode.js"></script>
+    <script type="text/javascript" src="/common/common.js"></script>
+    <script type="text/javascript" src="/blog/blog.js"></script>
+    <script type="text/javascript" src="/blog/articles/template0/template0.js"></script>
+    <script type="text/javascript">
+        blog_template0.init('TypeScriptをやる');
+    </script>
+    <script type="text/javascript" src="/latest/loading_latest.js"></script>   
+</body>
+</html>
